@@ -1,31 +1,16 @@
 package com.example.demo.controller;
 
-import com.alibaba.druid.util.HttpClientUtils;
 import com.example.demo.pojo.MessageSendStatusPojo;
-import com.example.demo.pojo.PricePojo;
 import com.example.demo.untils.JsonUtils;
 import com.yunpian.sdk.YunpianClient;
 import com.yunpian.sdk.api.SmsApi;
 import com.yunpian.sdk.model.Result;
 import com.yunpian.sdk.model.SmsSingleSend;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import sun.net.www.http.HttpClient;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,14 +67,12 @@ public class TestController {
         @GetMapping("/product/{id}")
         public String getProduct(@PathVariable String id) {
             //for debug
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             return "product id : " + id;
         }
 
         @GetMapping("/order/{id}")
         public String getOrder(@PathVariable String id) {
             //for debug
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             return "order id : " + id;
         }
 

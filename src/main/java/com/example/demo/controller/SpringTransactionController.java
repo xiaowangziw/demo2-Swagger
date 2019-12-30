@@ -8,8 +8,6 @@ public class SpringTransactionController {
 
     @GetMapping("test1")
     public String test1(String param){
-
-
         return "";
     }
 
