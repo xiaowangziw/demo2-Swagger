@@ -10,6 +10,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -49,6 +52,39 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
+    }
+
+    public static void main(String[] args) {
+        final List list = new CopyOnWriteArrayList();
+        for (int i = 0; i < 100; i++)
+            list.add(i);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    while (true) {
+                        System.out.println("size:"+list.get(list.size()-1));
+                    }
+                }catch (ArrayIndexOutOfBoundsException e){
+                    System.out.println(e.getCause());
+                    System.out.println(e.getStackTrace().toString());
+                }
+            }
+        }).start();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true) {
+                    for (int i = 0; i < list.size(); i++){
+                        System.out.println("pre:"+list.size());
+                        list.remove(list.size() - 1);
+                        System.out.println("later:"+list.size());
+                    }
+                }
+            }
+        }).start();
+
+//        while (true) ;
     }
 
 }
