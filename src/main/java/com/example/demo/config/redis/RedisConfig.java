@@ -14,16 +14,16 @@ import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
 
-//@Configuration
-//@ConditionalOnClass({JedisCluster.class})
-//@EnableConfigurationProperties(RedisProperties.class)
+@Configuration
+@ConditionalOnClass({JedisCluster.class})
+@EnableConfigurationProperties(RedisProperties.class)
 public class RedisConfig {
 
     @Resource
     private RedisProperties redisProperties;
 
-//    @Bean
-//    @Scope("singleton")
+    @Bean
+    @Scope("singleton")
     public JedisCluster getJedisCluster() {
         String[] nodesArray = redisProperties.getNodes().split(",");
         Set<HostAndPort> nodes = new HashSet<>();

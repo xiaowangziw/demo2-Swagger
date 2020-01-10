@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 
 /**
  */
-//@Component
-//@ConfigurationProperties(prefix = "spring.redis.cluster")
+@Component
+@ConfigurationProperties(prefix = "spring.redis.cluster")
 public class RedisProperties {
 
     private String nodes;

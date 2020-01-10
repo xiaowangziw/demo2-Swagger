@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.untils.RedisTool;
 import org.junit.runner.RunWith;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,16 @@ import redis.clients.jedis.JedisCluster;
 public class TestController {
 
     @Autowired
-    private RedisTemplate redisTemplate;
-//    private JedisCluster jedisCluster;
+    private JedisCluster jedisCluster;
+    //    private RedisTemplate redisTemplate;
 
     @Test
     public void test1(){
-        redisTemplate.opsForValue().set("test","test");
-        String test = redisTemplate.opsForValue().get("test").toString();
+        boolean test1 = RedisTool.tryGetDistributedLock(jedisCluster, "testKey2", "testValue", 6000);
+        System.out.println(test1);
+        Boolean test = jedisCluster.exists("test");
         System.out.println(test);
-
+        Long append = jedisCluster.append("test", "test");
+        System.out.println(jedisCluster.exists("test"));
     }
 }

@@ -26,6 +26,15 @@ public class RedisTool {
 
         String result = "";
         try {
+            /**
+             * 根据第三个参数，把key、value set到redis中
+                nx ： not exists, 只有key 不存在时才把key value set 到redis
+                xx ： is exists ，只有 key 存在是，才把key value set 到redis
+
+             expx参数有两个值可选 ：
+             ex ： seconds 秒
+             px :   milliseconds 毫秒
+             */
             result = jedisCluster.set(lockKey, requestId, SET_IF_NOT_EXIST, SET_WITH_EXPIRE_TIME, expireTime);
         } catch (Exception e) {
             log.error("定时任务获取锁失败" + e.getMessage());

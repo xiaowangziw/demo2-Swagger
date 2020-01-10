@@ -1,46 +1,38 @@
 spring:
   redis:
-#    cluster:
-#      password: xiaowangzi
-#      nodes: 122.51.175.24:7001,122.51.175.24:7002,122.51.175.24:7003,122.51.175.24:7004,122.51.175.24:7005,122.51.175.24:7006
-#      max-redirects: 3
-#      maxIdle: 100
-#      connectionTimeout: 100000
-#      socketTimeout: 10000
-#      maxAttempts: 5
-#      maxTotal: 200
-#      minIdle: 10
-#      password: ${redis.password}
-#      nodes: ${redis.nodes}
-#      max-redirects: ${redis.max-redirects}
-#      maxIdle: ${redis.minIdle}
-#      connectionTimeout: ${redis.connectionTimeout}
-#      socketTimeout: ${redis.socketTimeout}
-#      maxAttempts: ${redis.maxAttempts}
-#      maxTotal: ${redis.maxTotal}
-#      minIdle: ${redis.minIdle}
-
-  ## Redis 配置
-    ## Redis服务器地址
-    host: 122.51.175.24
-    ## Redis服务器连接端口
-    port: 63791
-    ## Redis服务器连接密码（默认为空）
+    cluster:
+      password: xiaowangzi
+      nodes: 122.51.175.24:7001,122.51.175.24:7002,122.51.175.24:7003,122.51.175.24:7004,122.51.175.24:7005,122.51.175.24:7006
+      max-redirects: 3
+      maxIdle: 100
+      connectionTimeout: 100000
+      socketTimeout: 10000
+      maxAttempts: 5
+      maxTotal: 200
+      minIdle: 10
     password: xiaowangzi
-    jedis:
-      pool:
-        ## 连接池最大连接数（使用负值表示没有限制）
-        #spring.redis.pool.max-active=8
-        max-active: 8
-        ## 连接池最大阻塞等待时间（使用负值表示没有限制）
-        #spring.redis.pool.max-wait=-1
-        max-wait: -1
-        ## 连接池中的最大空闲连接
-        #spring.redis.pool.max-idle=8
-        max-idle: 8
-        ## 连接池中的最小空闲连接
-        #spring.redis.pool.min-idle=0
-        min-idle: 0
-    ## 连接超时时间（毫秒）
-    timeout: 1200
+
+    ## Redis 配置 单机
+    ## Redis服务器地址
+#    password: xiaowangzi
+#    host: 122.51.175.24
+#    ## Redis服务器连接端口
+#    port: 63791
+#    ## Redis服务器连接密码（默认为空）
+#    jedis:
+#      pool:
+#        ## 连接池最大连接数（使用负值表示没有限制）
+#        #spring.redis.pool.max-active=8
+#        max-active: 8
+#        ## 连接池最大阻塞等待时间（使用负值表示没有限制）
+#        #spring.redis.pool.max-wait=-1
+#        max-wait: -1
+#        ## 连接池中的最大空闲连接
+#        #spring.redis.pool.max-idle=8
+#        max-idle: 8
+#        ## 连接池中的最小空闲连接
+#        #spring.redis.pool.min-idle=0
+#        min-idle: 0
+#    ## 连接超时时间（毫秒）
+#    timeout: 1200
 
